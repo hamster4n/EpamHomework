@@ -2,10 +2,9 @@ package ua.org.crazy.homework02;
 
 import java.util.Arrays;
 
-class SortingUtils {
-    //алгоритм сортировки вставками
-    static int[] insertionSort(int[] arr){
-        long start = getCurrentTime();
+public class SortingUtils {
+
+    public static int[] insertionSort(int[] arr){
         int key;
         for (int i = 0; i < arr.length; i++) {
             key = arr[i];
@@ -16,14 +15,10 @@ class SortingUtils {
             }
             arr[j + 1] = key;
         }
-        long finish = getCurrentTime();
-        System.out.println("the work is over for " + (finish - start) + "ms");
         return arr;
     }
 
-    //алгоритм сортировки выбором
     static int[] choiceSort(int[] arr){
-        long start = getCurrentTime();
         for (int i = 0; i < arr.length; i++) {
             int minArr = arr[i];
             int minI = i;
@@ -34,34 +29,29 @@ class SortingUtils {
                 }
             }
             if (i != minI){
-                int temp = arr[i];
-                arr[i] = arr[minI];
-                arr[minI] = temp;
+                swap(arr, i, minI);
             }
         }
-        long finish = getCurrentTime();
-        System.out.println("the work is over for " + (finish - start) + "ms");
         return arr;
     }
 
-    //алгоритм сортировки пузырьком
+    private static void swap(int[] arr, int i, int minI) {
+        int temp = arr[i];
+        arr[i] = arr[minI];
+        arr[minI] = temp;
+    }
+
     static int[] bubbleSort(int[] arr){
-        long start = getCurrentTime();
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1; j++) {
                 if (arr[j] > arr[j + 1]){
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                    swap(arr, j, j + 1);
                 }
             }
         }
-        long finish = getCurrentTime();
-        System.out.println("the work is over for " + (finish - start) + "ms");
         return arr;
     }
 
-    //алгоритм быстрой сортировки
     static int[] quickSort(int[] arr, int low, int high){
         int index = partition (arr, low, high);
         if (low < index - 1){
@@ -96,7 +86,6 @@ class SortingUtils {
         return i;
     }
 
-    //алгоритм сортировки слиянием
     static int[] mergeSort(int[] arr){
         if (arr.length < 2){
             return arr;
@@ -136,14 +125,6 @@ class SortingUtils {
         for (int element:arr) {
             System.out.println(element);
         }
-    }
-
-    static int[] getArray(){
-        int[] arr = new int[100000];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int) Math.round((Math.random() * 100));
-        }
-        return arr;
     }
 
     static long getCurrentTime(){
