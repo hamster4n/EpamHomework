@@ -10,8 +10,7 @@ public class ReflectionRunner {
         Singletone instance1 = constructor.newInstance();
         Singletone instance2 = constructor.newInstance();
 
-        System.out.println("first instance: " + instance1);
-        System.out.println("second instance " + instance2);
+        System.out.println("first instance == second instance  -->>" + (instance1 == instance2));
     }
 
 }
