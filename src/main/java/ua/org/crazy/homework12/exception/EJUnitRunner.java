@@ -20,12 +20,10 @@ public class EJUnitRunner {
 
         Method[] methods = testClazz.getDeclaredMethods();
 
-
         List<Method> testMethods = Arrays.stream(methods)
                 .filter(method -> method.isAnnotationPresent(Test.class))
                 .filter(method -> !method.isAnnotationPresent(Ignore.class))
                 .collect(Collectors.toList());
-
 
         for (Method method: testMethods) {
             runSingleMethod(instance, method);
