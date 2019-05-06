@@ -8,7 +8,7 @@
    Предварительно ознакомтесь:
    https://habr.com/ru/users/tarzan82/posts/ 4 статьи 
 
-2. Написать реализацию методов equals и hashCode для класс User не прибегая к автогенерации этих методов.
+2. Написать реализацию методов equals и hashCode для класса User не прибегая к автогенерации этих методов.
 
 public class User{
 private String name;
@@ -25,7 +25,7 @@ public class Address{
 private String city;
 //....
 }
-public emun Sex{
+public enum Sex{
 //..
 }
 
