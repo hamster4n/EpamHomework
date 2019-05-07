@@ -10,12 +10,14 @@ public class Artists {
     public Artists(List<Artist> artists) {
         this.artists = artists;
     }
-    private Optional<Artist> getArtist(int index) {
+
+    public Optional<Artist> getArtist(int index) {
         if (index < 0 || index >= artists.size()) {
-            indexException(index);
+            return Optional.empty();
         }
         return Optional.ofNullable(artists.get(index));
     }
+
     private void indexException(int index) {
         throw new IllegalArgumentException(index +
                 " doesn't correspond to an Artist");
