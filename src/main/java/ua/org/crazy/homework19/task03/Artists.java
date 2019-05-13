@@ -12,23 +12,19 @@ public class Artists {
     }
 
     public Optional<Artist> getArtist(int index) {
-        if (index < 0 || index >= artists.size()) {
-            return Optional.empty();
-        }
-        return Optional.ofNullable(artists.get(index));
+        return Optional.ofNullable(artists.get(indexException(index)));
     }
 
-    private void indexException(int index) {
-        throw new IllegalArgumentException(index +
-                " doesn't correspond to an Artist");
+    private int indexException(int index) {
+        if (index < 0 || index >= artists.size()) {
+            throw new IllegalArgumentException(index +
+                    " doesn't correspond to an Artist");
+        }
+        return index;
     }
 
     public String getArtistName(int index) {
-        try {
-            Artist artist = getArtist(index).get();
-            return artist.getName();
-        } catch (IllegalArgumentException e) {
-            return "unknown";
-        }
+        return getArtist(index)
+                .orElseThrow(IllegalArgumentException::new).getName();
     }
 }
