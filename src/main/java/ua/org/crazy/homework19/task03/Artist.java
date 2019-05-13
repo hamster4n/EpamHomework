@@ -1,0 +1,13 @@
+package ua.org.crazy.homework19.task03;
+
+public class Artist {
+    private String name;
+
+    public Artist(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
