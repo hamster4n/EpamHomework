@@ -22,7 +22,6 @@ public class MyArrayList<T> implements MyList<T> {
         }
         array[size] = item;
         size++;
-
     }
 
     private void increaseArray() {
@@ -45,39 +44,11 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public T remove(int index) {
-        Object[] arrayCopy;
-        Object returnObj = array[index];
-
-        if (index == 0) {
-            arrayCopy = removeFirst(array);
-        } else {
-            if (index == array.length - 1) {
-                arrayCopy = removeLast(array);
-            } else {
-                arrayCopy = removeMiddle(index, array);
-            }
-        }
-        this.array = arrayCopy;
-        return (T) returnObj;
-    }
-
-    private Object[] removeMiddle(int index, Object[] array) {
-        Object[] arrayCopy = new Object[array.length - 1];
-        System.arraycopy(array, 0, arrayCopy, 0, index);
-        System.arraycopy(array, index + 1, arrayCopy, index, arrayCopy.length - index);
-        return arrayCopy;
-    }
-
-    private Object[] removeLast(Object[] array) {
-        Object[] arrayCopy = new Object[array.length - 1];
-        System.arraycopy(array, 0, arrayCopy, 0, arrayCopy.length);
-        return arrayCopy;
-    }
-
-    private Object[] removeFirst(Object[] array) {
-        Object[] arrayCopy = new Object[array.length - 1];
-        System.arraycopy(array, 1, arrayCopy, 0, arrayCopy.length);
-        return arrayCopy;
+        validateIndex(index);
+        T element = (T) array[index];
+        System.arraycopy(array, index+1, array, index, size-index-1);
+        array[size--] = null;
+        return element;
     }
 
     @Override
