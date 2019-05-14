@@ -1,0 +1,3 @@
+When a Container translates the JSP into a servlet, the beginning of the
+service method is a pile of implicit object declarations and assignments. With
+implicit objects, you can write a JSP.
