@@ -1,0 +1,23 @@
+Сериализировать и десериализировать обратно:
+
+public class User{
+
+private String name;
+private String surname;
+private Sex sex;
+private Address address;
+private LocalDate birthday;
+//....
+}
+
+...
+
+public class Address{
+
+private String city;
+private int code;
+//.....
+}
+
+public enum Sex{
+MALE,FEMALE}
